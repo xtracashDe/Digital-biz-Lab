@@ -1540,6 +1540,26 @@
     }
     function show() { banner.hidden = false; }
     function hide() { banner.hidden = true; }
+    // TikTok click events. These fire only when the pixel is loaded, which means the visitor accepted cookies.
+    // Selar link = InitiateCheckout (visitor heads to the ticket page). WhatsApp link = Contact (visitor starts a chat).
+    document.addEventListener('click', function (e) {
+      if (!pixelLoaded || !window.ttq) return;
+      var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+      if (!a) return;
+      var host;
+      try { host = new URL(a.href, location.href).hostname; } catch (err) { return; }
+      var label = (a.getAttribute('aria-label') || a.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 60);
+      if (host === 'selar.co' || host.slice(-9) === '.selar.co') {
+        window.ttq.track('InitiateCheckout', {
+          content_id: 'ai-for-business-mastery-s1',
+          content_type: 'product',
+          content_name: 'AI for Business Mastery Season 1',
+          description: label
+        });
+      } else if (host === 'wa.me' || host === 'api.whatsapp.com') {
+        window.ttq.track('Contact', { description: label });
+      }
+    });
     document.getElementById('cookieAccept').addEventListener('click', function () {
       write('accepted'); hide(); loadPixel();
     });
