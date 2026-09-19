@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Biz Lab — Learn Digital. Build Better.</title>
+  <meta name="description" content="Digital Biz Lab is a practical digital business education platform helping entrepreneurs, professionals, creators and organisations use AI, technology and digital skills to work smarter and grow.">
+  <meta name="keywords" content="AI training Nigeria, digital skills Nigeria, AI business training, AI courses Abuja, corporate AI training Nigeria, digital business education, AI for entrepreneurs Nigeria">
+  <meta property="og:title" content="Digital Biz Lab — Learn Digital. Build Better.">
+  <meta property="og:description" content="Practical AI, digital skills and business education for entrepreneurs, professionals, creators and organisations in Nigeria.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://digitalbizlab.net">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://digitalbizlab.net">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔬</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ===== DESIGN TOKENS ===== */
+    :root {
+      --navy: #0D1117;
+      --navy-mid: #161B22;
+      --navy-card: #1C2330;
+      --blue: #2563EB;
+      --blue-light: #3B82F6;
+      --blue-glow: rgba(37,99,235,0.15);
+      --yellow: #F5C400;
+      --yellow-muted: rgba(245,196,0,0.12);
+      --white: #FFFFFF;
+      --grey-1: #F4F6F9;
+      --grey-2: #E2E8F0;
+      --grey-3: #94A3B8;
+      --grey-4: #64748B;
+      --text-body: #CBD5E1;
+      --text-muted: #64748B;
+      --border: rgba(255,255,255,0.07);
+      --radius: 8px;
+      --radius-lg: 16px;
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --max-w: 1160px;
+    }
+
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--navy);
+      color: var(--text-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    button { cursor: pointer; font-family: inherit; border: none; background: none; }
+
+    /* ===== LAYOUT ===== */
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    section { padding: 80px 0; }
+
+    /* ===== TYPOGRAPHY ===== */
+    h1, h2, h3, h4 { font-family: var(--font-display); color: var(--white); line-height: 1.15; letter-spacing: -0.02em; }
+    h1 { font-size: clamp(2.2rem, 5.5vw, 4rem); font-weight: 700; }
+    h2 { font-size: clamp(1.75rem, 3.5vw, 2.6rem); font-weight: 700; }
+    h3 { font-size: 1.25rem; font-weight: 600; }
+    h4 { font-size: 1rem; font-weight: 600; }
+    p { font-size: 1rem; line-height: 1.7; color: var(--text-body); }
+
+    /* ===== COMPONENTS ===== */
+    .pill {
+      display: inline-block;
+      background: var(--yellow-muted);
+      color: var(--yellow);
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 100px;
+      border: 1px solid rgba(245,196,0,0.2);
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 13px 24px;
+      border-radius: var(--radius);
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--yellow);
+      color: var(--navy);
+    }
+    .btn-primary:hover { background: #E8B800; transform: translateY(-1px); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover { background: var(--navy-card); border-color: rgba(255,255,255,0.15); }
+    .btn-blue {
+      background: var(--blue);
+      color: var(--white);
+    }
+    .btn-blue:hover { background: var(--blue-light); transform: translateY(-1px); }
+    .btn-outline-yellow {
+      background: transparent;
+      color: var(--yellow);
+      border: 1px solid rgba(245,196,0,0.3);
+    }
+    .btn-outline-yellow:hover { background: var(--yellow-muted); }
+
+    /* ===== NAV ===== */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13,17,23,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      gap: 16px;
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .nav-logo span { color: var(--yellow); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--text-body);
+      font-size: 0.875rem;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: all 0.15s;
+    }
+    .nav-links a:hover { color: var(--white); background: var(--navy-card); }
+    .nav-cta { display: flex; align-items: center; gap: 10px; }
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 8px;
+      border-radius: 6px;
+      background: var(--navy-card);
+    }
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: var(--navy-mid);
+      border-top: 1px solid var(--border);
+      padding: 16px 24px 24px;
+      gap: 4px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: var(--text-body);
+      font-size: 0.95rem;
+      font-weight: 500;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .mobile-menu a:hover { color: var(--white); }
+    .mobile-menu .btn { margin-top: 12px; text-align: center; justify-content: center; }
+
+    /* ===== HERO ===== */
+    .hero {
+      padding: 80px 0 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      right: -200px;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(37,99,235,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -100px;
+      left: -100px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(245,196,0,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 820px; }
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .hero-badge {
+      background: var(--blue-glow);
+      border: 1px solid rgba(37,99,235,0.3);
+      color: var(--blue-light);
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 100px;
+    }
+    .hero-badge-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--blue-light);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    .hero h1 { margin-bottom: 24px; }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--yellow);
+    }
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--text-body);
+      max-width: 560px;
+      margin-bottom: 40px;
+      line-height: 1.7;
+    }
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 56px; }
+    .hero-social-proof {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .proof-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--grey-3);
+    }
+    .proof-icon { color: var(--yellow); font-size: 1rem; }
+
+    /* ===== METHODOLOGY STRIP ===== */
+    .methodology {
+      background: var(--navy-mid);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 48px 0;
+    }
+    .methodology-label {
+      text-align: center;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 36px;
+    }
+    .method-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+    }
+    .method-grid::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: 12.5%;
+      width: 75%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), var(--blue), var(--border), transparent);
+      z-index: 0;
+    }
+    .method-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 12px;
+      padding: 0 16px;
+      position: relative;
+      z-index: 1;
+    }
+    .method-num {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--navy);
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--grey-3);
+    }
+    .method-step.active .method-num {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: var(--white);
+    }
+    .method-step h4 { color: var(--white); font-size: 0.95rem; }
+    .method-step p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; }
+
+    /* ===== VERTICALS ===== */
+    .section-head { margin-bottom: 48px; }
+    .section-head h2 { margin-bottom: 12px; }
+    .section-head p { font-size: 1.05rem; max-width: 540px; color: var(--text-body); }
+    .section-head.centered { text-align: center; }
+    .section-head.centered p { margin: 0 auto; }
+
+    .verticals-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .vertical-card {
+      background: var(--navy-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      transition: all 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .vertical-card:hover {
+      border-color: rgba(37,99,235,0.3);
+      transform: translateY(-2px);
+    }
+    .vertical-card.featured {
+      border-color: rgba(245,196,0,0.3);
+      background: linear-gradient(135deg, var(--navy-card), rgba(245,196,0,0.04));
+    }
+    .vertical-card.featured:hover { border-color: rgba(245,196,0,0.5); }
+    .v-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      background: var(--navy-mid);
+      border: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .vertical-card h3 { color: var(--white); margin: 0; }
+    .vertical-card p { font-size: 0.9rem; color: var(--text-body); flex: 1; }
+    .v-link {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--blue-light);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.15s;
+    }
+    .v-link:hover { gap: 10px; }
+    .vertical-card.featured .v-link { color: var(--yellow); }
+
+    /* ===== FLAGSHIP ===== */
+    .flagship {
+      background: var(--navy-mid);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .flagship-inner {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 64px;
+      align-items: start;
+    }
+    .flagship-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--blue-glow);
+      border: 1px solid rgba(37,99,235,0.25);
+      color: var(--blue-light);
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .flagship-left h2 { margin-bottom: 8px; }
+    .flagship-subtitle {
+      color: var(--yellow);
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .flagship-left > p { margin-bottom: 28px; font-size: 1.05rem; }
+    .outcome-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+    .outcome-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: var(--text-body);
+    }
+    .check {
+      width: 18px;
+      height: 18px;
+      background: var(--blue-glow);
+      border: 1px solid rgba(37,99,235,0.3);
+      border-radius: 50%;
+      color: var(--blue-light);
+      font-size: 0.65rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .flagship-card {
+      background: var(--navy-card);
+      border: 1px solid rgba(245,196,0,0.2);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      position: sticky;
+      top: 80px;
+    }
+    .cohort-label {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+    }
+    .cohort-name {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .price-from {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .price-amount {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--yellow);
+    }
+    .price-note { font-size: 0.8rem; color: var(--text-muted); }
+    .cohort-includes {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 24px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    .cohort-includes li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--text-body);
+    }
+    .cohort-includes li span { color: var(--blue-light); font-size: 0.9rem; }
+    .flagship-card .btn { width: 100%; justify-content: center; margin-bottom: 12px; }
+    .card-reassurance {
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* ===== BUILD STRIP ===== */
+    .build-strip { background: var(--navy); }
+    .build-intro { margin-bottom: 48px; }
+    .build-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+    .build-item {
+      background: var(--navy-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 16px;
+      text-align: center;
+      transition: all 0.2s;
+    }
+    .build-item:hover {
+      border-color: rgba(37,99,235,0.25);
+      background: rgba(37,99,235,0.04);
+    }
+    .build-emoji { font-size: 1.5rem; display: block; margin-bottom: 8px; }
+    .build-item p { font-size: 0.8rem; color: var(--text-body); line-height: 1.4; }
+
+    /* ===== CORPORATE ===== */
+    .corporate { background: var(--navy-mid); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .corporate-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .corporate-left h2 { margin-bottom: 16px; }
+    .corporate-left > p { margin-bottom: 32px; }
+    .corp-services {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 32px;
+    }
+    .corp-service {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--text-body);
+      padding: 8px;
+      border-radius: 6px;
+      background: var(--navy-card);
+      border: 1px solid var(--border);
+    }
+    .corp-service-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--blue);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .corporate-form {
+      background: var(--navy-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+    }
+    .form-heading {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .form-subheading {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+    .form-group label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--grey-3);
+      font-family: var(--font-display);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: var(--navy);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      padding: 10px 14px;
+      transition: border-color 0.15s;
+      width: 100%;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: var(--text-muted); }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--blue);
+    }
+    .form-group select option { background: var(--navy-mid); }
+    .form-group textarea { resize: vertical; min-height: 80px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .corporate-form .btn { width: 100%; justify-content: center; margin-top: 4px; }
+
+    /* ===== WHY DBL ===== */
+    .why-dbl { background: var(--navy); }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .why-card {
+      padding: 32px 28px;
+      border-left: 2px solid var(--border);
+      transition: border-color 0.2s;
+    }
+    .why-card:hover { border-left-color: var(--blue); }
+    .why-num {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--blue);
+      line-height: 1;
+      margin-bottom: 12px;
+      opacity: 0.7;
+    }
+    .why-card h3 { margin-bottom: 10px; font-size: 1.05rem; }
+    .why-card p { font-size: 0.875rem; }
+
+    /* ===== COMMUNITY ===== */
+    .community {
+      background: var(--navy-mid);
+      border-top: 1px solid var(--border);
+    }
+    .community-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .community-left h2 { margin-bottom: 16px; }
+    .community-left > p { margin-bottom: 32px; }
+    .community-features {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .cf-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px;
+      background: var(--navy-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+    .cf-icon { font-size: 1.25rem; flex-shrink: 0; }
+    .cf-text h4 { color: var(--white); font-size: 0.9rem; margin-bottom: 2px; }
+    .cf-text p { font-size: 0.8rem; }
+    .community-visual {
+      background: var(--navy-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      text-align: center;
+    }
+    .cv-emoji { font-size: 3rem; margin-bottom: 16px; }
+    .cv-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .cv-sub { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 28px; }
+    .cv-benefits {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      text-align: left;
+      margin-bottom: 28px;
+    }
+    .cv-benefit {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.875rem;
+      color: var(--text-body);
+      padding: 10px 12px;
+      background: var(--navy);
+      border-radius: var(--radius);
+    }
+    .cv-benefit span:first-child { font-size: 1rem; }
+    .community-visual .btn { width: 100%; justify-content: center; }
+
+    /* ===== FOUNDER ===== */
+    .founder { background: var(--navy); border-top: 1px solid var(--border); }
+    .founder-inner {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .founder-visual {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+    .founder-avatar {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: var(--navy-card);
+      border: 3px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      overflow: hidden;
+    }
+    .founder-name {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      text-align: center;
+    }
+    .founder-role {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+    .founder-content h2 { margin-bottom: 16px; }
+    .founder-content > p { margin-bottom: 20px; font-size: 1rem; }
+    .founder-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 28px;
+    }
+    .founder-tag {
+      background: var(--navy-card);
+      border: 1px solid var(--border);
+      color: var(--text-body);
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 100px;
+    }
+
+    /* ===== CONTENT SERIES ===== */
+    .content-series { background: var(--navy-mid); border-top: 1px solid var(--border); }
+    .series-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .series-card {
+      background: var(--navy-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      transition: all 0.2s;
+    }
+    .series-card:hover { border-color: rgba(37,99,235,0.3); }
+    .series-tag {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 8px;
+    }
+    .series-card h3 { font-size: 0.95rem; margin-bottom: 8px; }
+    .series-card p { font-size: 0.82rem; }
+
+    /* ===== TRUST BAR ===== */
+    .trust-bar {
+      background: var(--navy);
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+    }
+    .trust-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.85rem;
+      color: var(--text-body);
+    }
+    .trust-icon { font-size: 1.2rem; }
+
+    /* ===== CTA SECTION ===== */
+    .final-cta {
+      background: linear-gradient(135deg, var(--navy-mid) 0%, rgba(37,99,235,0.08) 100%);
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 96px 0;
+    }
+    .final-cta h2 { max-width: 600px; margin: 0 auto 16px; }
+    .final-cta p { max-width: 480px; margin: 0 auto 40px; }
+    .cta-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--navy-mid);
+      border-top: 1px solid var(--border);
+      padding: 48px 0 32px;
+    }
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+    .footer-brand {}
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .footer-logo span { color: var(--yellow); }
+    .footer-brand p { font-size: 0.85rem; line-height: 1.6; max-width: 260px; margin-bottom: 20px; }
+    .footer-tagline {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      color: var(--yellow);
+      font-weight: 600;
+    }
+    .footer-col h4 {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--grey-3);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul li a {
+      font-size: 0.875rem;
+      color: var(--text-body);
+      transition: color 0.15s;
+    }
+    .footer-col ul li a:hover { color: var(--white); }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-bottom p { font-size: 0.78rem; color: var(--text-muted); }
+    .footer-links-row {
+      display: flex;
+      gap: 20px;
+    }
+    .footer-links-row a { font-size: 0.78rem; color: var(--text-muted); transition: color 0.15s; }
+    .footer-links-row a:hover { color: var(--white); }
+    .wa-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 54px;
+      height: 54px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+      z-index: 200;
+      transition: transform 0.2s;
+    }
+    .wa-float:hover { transform: scale(1.08); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .flagship-inner { grid-template-columns: 1fr; gap: 40px; }
+      .flagship-card { position: static; }
+      .corporate-inner { grid-template-columns: 1fr; gap: 40px; }
+      .community-inner { grid-template-columns: 1fr; gap: 40px; }
+      .founder-inner { grid-template-columns: 1fr; gap: 32px; }
+      .founder-visual { flex-direction: row; justify-content: flex-start; }
+      .verticals-grid { grid-template-columns: repeat(2, 1fr); }
+      .build-grid { grid-template-columns: repeat(3, 1fr); }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      section { padding: 56px 0; }
+      .nav-links, .nav-cta { display: none; }
+      .nav-toggle { display: flex; }
+      .method-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+      .method-grid::before { display: none; }
+      .verticals-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .build-grid { grid-template-columns: repeat(2, 1fr); }
+      .series-grid { grid-template-columns: 1fr; }
+      .corp-services { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero-ctas { flex-direction: column; }
+      .hero-ctas .btn { text-align: center; justify-content: center; }
+      .trust-inner { flex-direction: column; align-items: flex-start; }
+      .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 480px) {
+      .container { padding: 0 16px; }
+      .build-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+    }
+  </style>
+
+  <!-- TikTok Pixel Code Begin -->
+  <script>
+    !function (w, d, t) {
+      w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=i,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};var o=document.createElement("script");o.type="text/javascript",o.async=!0,o.src=i+"?sdkid="+e+"&lib="+t;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)};
+      ttq.load('DAN3HFRC77UEIIELLG60');
+      ttq.page();
+    }(window, document, 'ttq');
+  </script>
+  <!-- TikTok Pixel Code End -->
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="container">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Digital Biz <span>Lab</span></a>
+      <ul class="nav-links">
+        <li><a href="#academy">Academy</a></li>
+        <li><a href="#ai-automation">AI &amp; Automation</a></li>
+        <li><a href="#corporate">Corporate</a></li>
+        <li><a href="#community">Community</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="#corporate" class="btn btn-secondary" style="font-size:0.82rem; padding:10px 16px;">Book Corporate Training</a>
+        <a href="#flagship" class="btn btn-primary" style="font-size:0.82rem; padding:10px 16px;">Join the Lab</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#academy">Academy</a>
+    <a href="#ai-automation">AI &amp; Automation</a>
+    <a href="#corporate">Corporate Training</a>
+    <a href="#community">Community</a>
+    <a href="#about">About</a>
+    <a href="#flagship" class="btn btn-primary">Join the Lab</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="home">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <div class="hero-badge-dot"></div>
+        <div class="hero-badge">Now Enrolling — Season 2 Cohort Open</div>
+      </div>
+      <h1>Learn Digital.<br><em>Build Better.</em></h1>
+      <p class="hero-sub">Practical AI, digital skills and business education for entrepreneurs, professionals, creators and organisations across Nigeria and Africa.</p>
+      <div class="hero-ctas">
+        <a href="#flagship" class="btn btn-primary" style="font-size:1rem; padding:15px 28px;">Join the Lab</a>
+        <a href="#academy" class="btn btn-secondary" style="font-size:1rem; padding:15px 28px;">Explore Programmes</a>
+      </div>
+      <div class="hero-social-proof">
+        <div class="proof-item"><span class="proof-icon">📍</span> Abuja, Nigeria</div>
+        <div class="proof-item"><span class="proof-icon">🏛</span> CAC Registered Business</div>
+        <div class="proof-item"><span class="proof-icon">🎓</span> Live Cohorts, Courses &amp; Corporate Training</div>
+        <div class="proof-item"><span class="proof-icon">🤝</span> Individual &amp; Organisation Programmes</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- METHODOLOGY -->
+<div class="methodology">
+  <div class="container">
+    <p class="methodology-label">The Digital Biz Lab Methodology</p>
+    <div class="method-grid">
+      <div class="method-step active">
+        <div class="method-num">01</div>
+        <h4>Learn</h4>
+        <p>Understand the tool, concept or business principle.</p>
+      </div>
+      <div class="method-step active">
+        <div class="method-num">02</div>
+        <h4>Apply</h4>
+        <p>Use it against a real business or work problem.</p>
+      </div>
+      <div class="method-step active">
+        <div class="method-num">03</div>
+        <h4>Build</h4>
+        <p>Produce something useful that can be tested or deployed.</p>
+      </div>
+      <div class="method-step active">
+        <div class="method-num">04</div>
+        <h4>Grow</h4>
+        <p>Turn capability into measurable business results.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VERTICALS / ACADEMY -->
+<section id="academy">
+  <div class="container">
+    <div class="section-head">
+      <div class="pill">The Academy</div>
+      <h2>What You Can Build<br>With Digital Biz Lab</h2>
+      <p>Five learning verticals. Practical programmes designed to move you from skill to application.</p>
+    </div>
+    <div class="verticals-grid">
+      <div class="vertical-card featured" id="ai-automation">
+        <div class="v-icon">🤖</div>
+        <h3>AI &amp; Automation</h3>
+        <p>Learn how to use AI and automation tools to improve your productivity, marketing and business operations. Practical skills that apply to real businesses today.</p>
+        <a href="#flagship" class="v-link">View cohort &#8594;</a>
+      </div>
+      <div class="vertical-card">
+        <div class="v-icon">📊</div>
+        <h3>Digital Business</h3>
+        <p>Practical strategies for starting and growing a business in the digital economy, covering marketing, sales, e-commerce and digital operations.</p>
+        <a href="#community" class="v-link">Join the waitlist &#8594;</a>
+      </div>
+      <div class="vertical-card">
+        <div class="v-icon">🎬</div>
+        <h3>Creator Economy</h3>
+        <p>Build content systems, personal brands and digital audiences. Learn how to monetise what you know and create recurring income from your content.</p>
+        <a href="#community" class="v-link">Join the waitlist &#8594;</a>
+      </div>
+      <div class="vertical-card">
+        <div class="v-icon">💻</div>
+        <h3>Digital Skills</h3>
+        <p>Develop practical technology skills that are immediately relevant to today's workplace. Tools, platforms and workflows that professionals can apply on Monday morning.</p>
+        <a href="#community" class="v-link">Join the waitlist &#8594;</a>
+      </div>
+      <div class="vertical-card">
+        <div class="v-icon">🏢</div>
+        <h3>Corporate Training</h3>
+        <p>Equip your team with practical AI and digital capabilities. Custom programmes for SMEs, banks, government institutions, NGOs and corporate organisations.</p>
+        <a href="#corporate" class="v-link">Get a proposal &#8594;</a>
+      </div>
+      <div class="vertical-card" style="background: linear-gradient(135deg, var(--navy-card), rgba(37,99,235,0.06)); border-color: rgba(37,99,235,0.2); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; min-height: 220px;">
+        <div style="font-size:2rem; margin-bottom:12px;">🔬</div>
+        <h3 style="font-size:1rem; margin-bottom:8px;">The Lab Community</h3>
+        <p style="font-size:0.82rem; margin-bottom:16px;">Peer learning, implementation support and business opportunities.</p>
+        <a href="#community" class="btn btn-outline-yellow" style="font-size:0.82rem; padding:8px 16px;">Join the Community</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FLAGSHIP COHORT -->
+<section class="flagship" id="flagship">
+  <div class="container">
+    <div class="flagship-inner">
+      <div class="flagship-left">
+        <div class="flagship-tag">&#11088; Flagship Programme</div>
+        <h2>AI for Business Mastery</h2>
+        <p class="flagship-subtitle">Digital Biz Lab Practical Cohort — Season 2</p>
+        <p>A live, hands-on training programme that shows entrepreneurs, SME owners, freelancers and professionals exactly how to use AI to improve their business. Not theory. Not slides about tools. Practical application from Day 1.</p>
+        <ul class="outcome-list">
+          <li><div class="check">&#10003;</div> Set up a working AI toolkit for your specific business</li>
+          <li><div class="check">&#10003;</div> Write sales copy, social media content and email campaigns with AI</li>
+          <li><div class="check">&#10003;</div> Build a customer response system for WhatsApp and Instagram</li>
+          <li><div class="check">&#10003;</div> Automate repetitive tasks and reclaim hours every week</li>
+          <li><div class="check">&#10003;</div> Create a 90-day AI implementation roadmap for your business</li>
+          <li><div class="check">&#10003;</div> No technical background required, only a business and the drive to grow it</li>
+        </ul>
+        <div style="display:flex; gap:24px; flex-wrap:wrap; padding:20px 0; border-top:1px solid var(--border); border-bottom:1px solid var(--border); margin-bottom:28px;">
+          <div>
+            <div style="font-family:var(--font-display); font-size:1.3rem; font-weight:700; color:var(--white);">3</div>
+            <div style="font-size:0.78rem; color:var(--text-muted);">Live Training Days</div>
+          </div>
+          <div>
+            <div style="font-family:var(--font-display); font-size:1.3rem; font-weight:700; color:var(--white);">Live</div>
+            <div style="font-size:0.78rem; color:var(--text-muted);">Zoom Sessions</div>
+          </div>
+          <div>
+            <div style="font-family:var(--font-display); font-size:1.3rem; font-weight:700; color:var(--white);">30</div>
+            <div style="font-size:0.78rem; color:var(--text-muted);">Days WhatsApp Support</div>
+          </div>
+          <div>
+            <div style="font-family:var(--font-display); font-size:1.3rem; font-weight:700; color:var(--white);">&#127881;</div>
+            <div style="font-size:0.78rem; color:var(--text-muted);">Certificate Included</div>
+          </div>
+        </div>
+        <p style="font-size:0.85rem; color:var(--text-muted);">Who this is for: Business owners, SME operators, freelancers, corporate professionals and anyone who wants to apply AI to their work right now.</p>
+      </div>
+
+      <div class="flagship-card">
+        <p class="cohort-label">Season 2 — Now Enrolling</p>
+        <p class="cohort-name">AI for Business Mastery</p>
+        <div class="price-row">
+          <span class="price-from">from</span>
+          <span class="price-amount">&#8358;25,000</span>
+        </div>
+        <p class="price-note" style="margin-bottom:20px;">Standard access. VIP from &#8358;45,000.</p>
+        <ul class="cohort-includes">
+          <li><span>&#127909;</span> 3 live training sessions on Zoom</li>
+          <li><span>&#128190;</span> All slides, prompts and resources</li>
+          <li><span>&#127916;</span> Session recordings (replay anytime)</li>
+          <li><span>&#128172;</span> 30-day WhatsApp support group</li>
+          <li><span>&#127941;</span> Certificate of completion</li>
+          <li><span>&#128506;</span> 90-day AI implementation roadmap (VIP)</li>
+          <li><span>&#128222;</span> 30-min 1-on-1 follow-up call (VIP)</li>
+        </ul>
+        <a href="https://selar.co/digitalbizlab" class="btn btn-primary" target="_blank" rel="noopener">Join the Next Cohort</a>
+        <a href="https://wa.me/2349151001980?text=Hi,%20I%20want%20to%20know%20more%20about%20the%20AI%20for%20Business%20Mastery%20Cohort" class="btn btn-secondary" style="width:100%; justify-content:center;" target="_blank" rel="noopener">Ask a Question on WhatsApp</a>
+        <p class="card-reassurance">Secure payment via Selar. Naira and card accepted.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUILD WITH AI -->
+<section class="build-strip">
+  <div class="container">
+    <div class="build-intro section-head">
+      <div class="pill">Build With AI</div>
+      <h2>Don't Just Learn the Tool.<br>Build Something With It.</h2>
+      <p>Digital Biz Lab focuses on outcomes. Here is what our participants and community build using AI and digital skills.</p>
+    </div>
+    <div class="build-grid">
+      <div class="build-item">
+        <span class="build-emoji">🌐</span>
+        <p>Websites and landing pages</p>
+      </div>
+      <div class="build-item">
+        <span class="build-emoji">📣</span>
+        <p>Marketing campaigns</p>
+      </div>
+      <div class="build-item">
+        <span class="build-emoji">💼</span>
+        <p>Business offers and proposals</p>
+      </div>
+      <div class="build-item">
+        <span class="build-emoji">🎥</span>
+        <p>Content systems and scripts</p>
+      </div>
+      <div class="build-item">
+        <span class="build-emoji">🤝</span>
+        <p>Customer service automations</p>
+      </div>
+      <div class="build-item">
+        <span class="build-emoji">📊</span>
+        <p>Business reports and decks</p>
+      </div>
+      <div class="build-item">
+        <span class="build-emoji">🛒</span>
+        <p>E-commerce stores</p>
+      </div>
+      <div class="build-item">
+        <span class="build-emoji">⚙️</span>
+        <p>Workflow automations</p>
+      </div>
+      <div class="build-item">
+        <span class="build-emoji">📱</span>
+        <p>WhatsApp business systems</p>
+      </div>
+      <div class="build-item">
+        <span class="build-emoji">💡</span>
+        <p>Digital products and offers</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CORPORATE -->
+<section class="corporate" id="corporate">
+  <div class="container">
+    <div class="corporate-inner">
+      <div class="corporate-left">
+        <div class="pill">Corporate Training</div>
+        <h2>AI &amp; Digital Training for Organisations</h2>
+        <p>Equip your team with practical AI and digital skills they can actually use. Custom programmes designed around your organisation's work and industry context.</p>
+        <div class="corp-services">
+          <div class="corp-service"><div class="corp-service-dot"></div>AI for Executives</div>
+          <div class="corp-service"><div class="corp-service-dot"></div>AI Productivity</div>
+          <div class="corp-service"><div class="corp-service-dot"></div>AI for Marketing</div>
+          <div class="corp-service"><div class="corp-service-dot"></div>AI for Customer Service</div>
+          <div class="corp-service"><div class="corp-service-dot"></div>AI for HR Teams</div>
+          <div class="corp-service"><div class="corp-service-dot"></div>AI for Operations</div>
+          <div class="corp-service"><div class="corp-service-dot"></div>Prompt Engineering</div>
+          <div class="corp-service"><div class="corp-service-dot"></div>Digital Transformation</div>
+          <div class="corp-service"><div class="corp-service-dot"></div>Staff Digital Skills</div>
+          <div class="corp-service"><div class="corp-service-dot"></div>AI Adoption Strategy</div>
+        </div>
+        <p style="font-size:0.875rem; color:var(--text-muted); margin-bottom:0;">Suitable for SMEs, banks, financial institutions, government institutions, NGOs, professional associations and corporate organisations. Enquiries are handled confidentially.</p>
+      </div>
+
+      <div class="corporate-form">
+        <p class="form-heading">Book Corporate Training</p>
+        <p class="form-subheading">Tell us about your organisation and we will come back with a tailored proposal.</p>
+        <form name="corporate-enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="corporate-enquiry">
+          <input name="bot-field" style="display:none" aria-hidden="true">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">Your Name</label>
+              <input type="text" id="fname" name="name" placeholder="Full name" required>
+            </div>
+            <div class="form-group">
+              <label for="forg">Organisation</label>
+              <input type="text" id="forg" name="organisation" placeholder="Organisation name" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="femail">Email Address</label>
+              <input type="email" id="femail" name="email" placeholder="your@email.com" required>
+            </div>
+            <div class="form-group">
+              <label for="fphone">Phone / WhatsApp</label>
+              <input type="tel" id="fphone" name="phone" placeholder="+234...">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="ftraining">Training Requirement</label>
+            <select id="ftraining" name="training_requirement">
+              <option value="">Select a topic</option>
+              <option>AI for Executives</option>
+              <option>AI Productivity for Staff</option>
+              <option>AI for Marketing Teams</option>
+              <option>AI for Customer Service</option>
+              <option>Prompt Engineering Workshop</option>
+              <option>Digital Skills Training</option>
+              <option>Digital Transformation Advisory</option>
+              <option>Custom Programme</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fsize">Number of Participants</label>
+              <select id="fsize" name="participants">
+                <option value="">Approx. number</option>
+                <option>1 to 10</option>
+                <option>11 to 25</option>
+                <option>26 to 50</option>
+                <option>51 to 100</option>
+                <option>100+</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="fdate">Preferred Timeframe</label>
+              <select id="fdate" name="timeframe">
+                <option value="">When</option>
+                <option>Within 1 month</option>
+                <option>1 to 3 months</option>
+                <option>3 to 6 months</option>
+                <option>Flexible</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="fmsg">Message (Optional)</label>
+            <textarea id="fmsg" name="message" placeholder="Tell us more about what your organisation needs..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-blue">Send Enquiry</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY DBL -->
+<section class="why-dbl">
+  <div class="container">
+    <div class="section-head centered">
+      <div class="pill">Why Digital Biz Lab</div>
+      <h2>Practical. Relevant. Actionable.</h2>
+      <p>We don't teach AI because it's fashionable. We teach it because it creates real business outcomes when applied correctly.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-num">01</div>
+        <h3>Real-World Application</h3>
+        <p>Every programme is built around applying skills to actual business problems. You will leave with something you built, not just notes from slides.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">02</div>
+        <h3>Nigerian Context First</h3>
+        <p>Our content is designed for Nigerian and African business realities. We address local purchasing behaviour, platforms, infrastructure and market dynamics.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">03</div>
+        <h3>No Jargon, No Hype</h3>
+        <p>We explain technology in plain language. We don't make exaggerated promises. If a tool solves your problem, we show you how. If it doesn't, we say so.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">04</div>
+        <h3>Broader Than AI</h3>
+        <p>Digital Biz Lab covers AI, digital business, creator skills, digital operations and corporate training. AI is a major vertical, not the entire company.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">05</div>
+        <h3>Practitioner-Led</h3>
+        <p>Instruction comes from someone who has built and operated businesses in Nigeria across fintech, digital media, corporate training and entrepreneurship.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">06</div>
+        <h3>Implementation Support</h3>
+        <p>Learning doesn't stop at the session. Post-cohort support, community and implementation guidance help you actually apply what you learned to your business.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY -->
+<section class="community" id="community">
+  <div class="container">
+    <div class="community-inner">
+      <div class="community-left">
+        <div class="pill">The Lab Community</div>
+        <h2>Join a Community That Builds, Not Just Learns</h2>
+        <p>The Digital Biz Lab community is where the learning continues. A space for Nigerian and African entrepreneurs, professionals and creators to share progress, ask questions and find opportunities.</p>
+        <div class="community-features">
+          <div class="cf-item">
+            <div class="cf-icon">💬</div>
+            <div class="cf-text">
+              <h4>Peer Learning</h4>
+              <p>Exchange ideas and practical lessons with people building similar things.</p>
+            </div>
+          </div>
+          <div class="cf-item">
+            <div class="cf-icon">🛠</div>
+            <div class="cf-text">
+              <h4>Implementation Support</h4>
+              <p>Get help when you're stuck applying what you learned to your business.</p>
+            </div>
+          </div>
+          <div class="cf-item">
+            <div class="cf-icon">📅</div>
+            <div class="cf-text">
+              <h4>Events and Workshops</h4>
+              <p>Access exclusive workshops, webinars and cohort updates first.</p>
+            </div>
+          </div>
+        </div>
+        <a href="https://wa.me/2349151001980?text=Hi,%20I%20want%20to%20join%20the%20Digital%20Biz%20Lab%20community" class="btn btn-primary" target="_blank" rel="noopener">Join the Community</a>
+      </div>
+      <div class="community-visual">
+        <div class="cv-emoji">🔬</div>
+        <div class="cv-title">The Lab</div>
+        <div class="cv-sub">Digital Biz Lab Community</div>
+        <div class="cv-benefits">
+          <div class="cv-benefit"><span>✅</span><span>Free to join for cohort participants</span></div>
+          <div class="cv-benefit"><span>✅</span><span>Resources, templates and prompts</span></div>
+          <div class="cv-benefit"><span>✅</span><span>Early access to new programmes</span></div>
+          <div class="cv-benefit"><span>✅</span><span>Business opportunities and referrals</span></div>
+          <div class="cv-benefit"><span>✅</span><span>Nigerian and African business focus</span></div>
+        </div>
+        <a href="https://wa.me/2349151001980?text=Hi,%20I%20want%20to%20join%20the%20Digital%20Biz%20Lab%20community" class="btn btn-outline-yellow" target="_blank" rel="noopener">Join the Community</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENT SERIES -->
+<section class="content-series">
+  <div class="container">
+    <div class="section-head">
+      <div class="pill">Free Content</div>
+      <h2>Signature Content Series</h2>
+      <p>Free practical content published regularly across our platforms. Follow to build before you ever enrol.</p>
+    </div>
+    <div class="series-grid">
+      <div class="series-card">
+        <div class="series-tag">Build This With AI</div>
+        <h3>Real Business. Real Build.</h3>
+        <p>Pick a real Nigerian business and build a useful asset with AI, step by step, from start to finish.</p>
+      </div>
+      <div class="series-card">
+        <div class="series-tag">60-Second AI</div>
+        <h3>One Practical Lesson</h3>
+        <p>One AI skill or application, explained and demonstrated in under 60 seconds.</p>
+      </div>
+      <div class="series-card">
+        <div class="series-tag">AI Business of the Week</div>
+        <h3>Improve Any Business With AI</h3>
+        <p>Take an ordinary business and show specifically how AI can improve its marketing, operations or service.</p>
+      </div>
+      <div class="series-card">
+        <div class="series-tag">From Idea to Offer</div>
+        <h3>Raw Idea to Sellable Product</h3>
+        <p>Turn a business idea into a real, sellable offer using digital tools and practical frameworks.</p>
+      </div>
+      <div class="series-card">
+        <div class="series-tag">AI Tool Test</div>
+        <h3>Does It Actually Work?</h3>
+        <p>Test an AI tool against a real business use case and show you the actual outcome, good or not.</p>
+      </div>
+      <div class="series-card">
+        <div class="series-tag">Build With Jeff</div>
+        <h3>Founder-Led Implementation</h3>
+        <p>Watch the founder build live, making mistakes and showing real results, not edited highlight reels.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT / FOUNDER -->
+<section class="founder" id="about">
+  <div class="container">
+    <div class="founder-inner">
+      <div class="founder-visual">
+        <div class="founder-avatar">👤</div>
+        <div>
+          <div class="founder-name">Jeff Entrepreneur</div>
+          <div class="founder-role">Founder, Digital Biz Lab</div>
+        </div>
+      </div>
+      <div class="founder-content">
+        <div class="pill">About the Founder</div>
+        <h2>Built by a Practitioner, Not a Theorist</h2>
+        <p>Jeffrey is the founder of Digital Biz Lab and brings experience spanning engineering, fintech, digital media, corporate training and entrepreneurship in Nigeria.</p>
+        <p>He co-founded and operates a licensed fintech platform in Nigeria, has delivered corporate training across technology and digital transformation, and created Digital Biz Lab to make practical digital and AI education accessible to entrepreneurs, professionals and organisations who want real results.</p>
+        <p style="font-size:0.875rem; color:var(--text-muted);">Digital Biz Lab is structured as an independent education platform, not a personal blog. As the business grows it will bring in additional instructors, programmes and corporate services. The founder's visibility accelerates the brand. The brand is not the founder.</p>
+        <div class="founder-tags">
+          <span class="founder-tag">Fintech</span>
+          <span class="founder-tag">AI Education</span>
+          <span class="founder-tag">Corporate Training</span>
+          <span class="founder-tag">Digital Business</span>
+          <span class="founder-tag">Entrepreneurship</span>
+          <span class="founder-tag">Nigeria</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="container">
+    <div class="trust-inner">
+      <div class="trust-item"><span class="trust-icon">🏛</span> CAC Registered Business — BN No. 9873146</div>
+      <div class="trust-item"><span class="trust-icon">📍</span> Abuja, Federal Capital Territory, Nigeria</div>
+      <div class="trust-item"><span class="trust-icon">🔒</span> Secure payments via Selar</div>
+      <div class="trust-item"><span class="trust-icon">📱</span> WhatsApp-first support</div>
+      <div class="trust-item"><span class="trust-icon">🎓</span> Verifiable certificates</div>
+    </div>
+  </div>
+</div>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="container">
+    <div class="pill">Get Started</div>
+    <h2>Ready to Learn Digital<br>and Build Better?</h2>
+    <p>Whether you are an entrepreneur, a professional, a creator or an organisation, there is a place for you in Digital Biz Lab.</p>
+    <div class="cta-buttons">
+      <a href="#flagship" class="btn btn-primary" style="font-size:1rem; padding:15px 28px;">Join the Next Cohort</a>
+      <a href="#corporate" class="btn btn-secondary" style="font-size:1rem; padding:15px 28px;">Book Corporate Training</a>
+      <a href="#community" class="btn btn-outline-yellow" style="font-size:1rem; padding:15px 28px;">Join the Community</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">Digital Biz <span>Lab</span></div>
+        <p>A practical digital business education and implementation platform helping entrepreneurs, professionals, creators and organisations use AI, technology and digital skills to work smarter and grow.</p>
+        <div class="footer-tagline">Learn Digital. Build Better.</div>
+      </div>
+      <div class="footer-col">
+        <h4>Academy</h4>
+        <ul>
+          <li><a href="#ai-automation">AI &amp; Automation</a></li>
+          <li><a href="#academy">Digital Business</a></li>
+          <li><a href="#academy">Creator Economy</a></li>
+          <li><a href="#academy">Digital Skills</a></li>
+          <li><a href="#flagship">Cohorts</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Organisation</h4>
+        <ul>
+          <li><a href="#corporate">Corporate Training</a></li>
+          <li><a href="#corporate">AI for Executives</a></li>
+          <li><a href="#corporate">Staff Programmes</a></li>
+          <li><a href="#corporate">Digital Transformation</a></li>
+          <li><a href="#corporate">Book a Discovery Call</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="https://wa.me/2349151001980" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="#community">Community</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="mailto:hello@digitalbizlab.net">Email Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Digital Biz Lab. Registered Business No. 9873146. Abuja, Nigeria.</p>
+      <div class="footer-links-row">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Refund Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/2349151001980?text=Hi,%20I%20have%20a%20question%20about%20Digital%20Biz%20Lab" class="wa-float" target="_blank" rel="noopener" title="Chat on WhatsApp" aria-label="Chat with Digital Biz Lab on WhatsApp">💬</a>
+
+<!-- SCRIPTS -->
+<script>
+  // Mobile nav toggle
+  const toggle = document.getElementById('navToggle');
+  const menu = document.getElementById('mobileMenu');
+  toggle.addEventListener('click', () => {
+    menu.classList.toggle('open');
+  });
+  // Close on link click
+  menu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => menu.classList.remove('open'));
+  });
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        const offset = 72;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+</body>
+</html>

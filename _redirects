@@ -1,0 +1,7 @@
+# Netlify Redirects — Digital Biz Lab
+
+# Redirect www to non-www
+https://www.digitalbizlab.net/* https://digitalbizlab.net/:splat 301!
+
+# 404 fallback
+/*  /index.html  200
