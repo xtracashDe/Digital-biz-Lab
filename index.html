@@ -1102,7 +1102,7 @@
           <li><svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg> 30-day WhatsApp implementation and mentoring group</li>
           <li><svg class="ico" aria-hidden="true"><use href="#i-award"/></svg> Certificate of completion</li>
         </ul>
-        <a href="https://selar.co/digitalbizlab" class="btn btn-primary" target="_blank" rel="noopener">Join the Next Cohort</a>
+        <a href="https://selar.com/63z45381i5" class="btn btn-primary" target="_blank" rel="noopener">Join the Next Cohort</a>
         <a href="https://wa.me/2349151001980?text=Hi,%20I%20want%20to%20know%20more%20about%20the%20AI%20for%20Business%20Mastery%20Cohort" class="btn btn-secondary" style="width:100%; justify-content:center;" target="_blank" rel="noopener">Ask a Question on WhatsApp</a>
         <p class="card-reassurance">Secure payment via Selar. Naira and card accepted.</p>
       </div>
@@ -1549,7 +1549,7 @@
       var host;
       try { host = new URL(a.href, location.href).hostname; } catch (err) { return; }
       var label = (a.getAttribute('aria-label') || a.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 60);
-      if (host === 'selar.co' || host.slice(-9) === '.selar.co') {
+      if (/(^|\.)selar\.(co|com)$/.test(host)) {
         window.ttq.track('InitiateCheckout', {
           content_id: 'ai-for-business-mastery-s1',
           content_type: 'product',
