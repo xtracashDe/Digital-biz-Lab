@@ -1484,7 +1484,7 @@
 <div class="cookie-banner" id="cookieBanner" role="dialog" aria-labelledby="cookieTitle" aria-describedby="cookieText" hidden>
   <div>
     <p class="cookie-title" id="cookieTitle">Cookies and advertising pixel</p>
-    <p id="cookieText">We use an optional TikTok Pixel to measure how our ads perform. It runs only if you accept. Our site works fully either way. Read our <a href="/privacy/#cookies">Privacy Policy</a>.</p>
+    <p id="cookieText">We use optional TikTok and Meta (Facebook/Instagram) Pixels to measure how our ads perform. They run only if you accept. Our site works fully either way. Read our <a href="/privacy/#cookies">Privacy Policy</a>.</p>
   </div>
   <div class="cookie-actions">
     <button type="button" class="btn btn-secondary" id="cookieDecline">Decline</button>
@@ -1522,7 +1522,7 @@
       }
     });
   });
-  // Cookie consent. The TikTok Pixel loads only after the visitor clicks Accept.
+  // Cookie consent. The TikTok and Meta Pixels load only after the visitor clicks Accept.
   (function () {
     var KEY = 'dbl_cookie_consent';
     var banner = document.getElementById('cookieBanner');
@@ -1537,28 +1537,44 @@
             ttq.load('DAN3HFRC77UEIIELLG60');
             ttq.page();
           }(window, document, 'ttq');
+      !function(f,b,e,v,n,t,s)
+          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+          n.queue=[];t=b.createElement(e);t.async=!0;
+          t.src=v;s=b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t,s)}(window, document,'script',
+          'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1742500660502708');
+      fbq('track', 'PageView');
     }
     function show() { banner.hidden = false; }
     function hide() { banner.hidden = true; }
-    // TikTok click events. These fire only when the pixel is loaded, which means the visitor accepted cookies.
-    // Selar link = ClickButton (visitor heads to the ticket page; Selar itself sends Initiate Checkout and Purchase).
-    // WhatsApp link = Contact (visitor starts a chat).
+    // TikTok and Meta click events. These fire only when the pixels are loaded, which means the visitor accepted cookies.
+    // Selar link: TikTok gets ClickButton, Meta gets Lead (visitor heads to the ticket page; Selar itself sends its own checkout/purchase events).
+    // WhatsApp link = Contact on both (visitor starts a chat).
     document.addEventListener('click', function (e) {
-      if (!pixelLoaded || !window.ttq) return;
+      if (!pixelLoaded) return;
       var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
       if (!a) return;
       var host;
       try { host = new URL(a.href, location.href).hostname; } catch (err) { return; }
       var label = (a.getAttribute('aria-label') || a.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 60);
       if (/(^|\.)selar\.(co|com)$/.test(host)) {
-        window.ttq.track('ClickButton', {
+        if (window.ttq) window.ttq.track('ClickButton', {
           content_id: 'ai-for-business-mastery-s1',
           content_type: 'product',
           content_name: 'AI for Business Mastery Season 1',
           description: label
         });
+        if (window.fbq) window.fbq('track', 'Lead', {
+          content_name: 'AI for Business Mastery Season 1',
+          content_category: 'Selar ticket link',
+          description: label
+        });
       } else if (host === 'wa.me' || host === 'api.whatsapp.com') {
-        window.ttq.track('Contact', { description: label });
+        if (window.ttq) window.ttq.track('Contact', { description: label });
+        if (window.fbq) window.fbq('track', 'Contact', { description: label });
       }
     });
     document.getElementById('cookieAccept').addEventListener('click', function () {
