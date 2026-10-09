@@ -68,3 +68,11 @@ Business choices written into the pages that you should confirm or change:
 * Retention: enquiries up to 24 months, session recordings up to 12 months.
 * Data requests answered within one month.
 * Complaints handled within 30 days before mediation or court.
+
+## Certificate verification (`/verify/`)
+
+`verify/index.html` is the public page where anyone can check a Digital Biz Lab certificate by ID (the QR code on each certificate opens `https://digitalbizlab.net/verify/?id=<ID>`). `verify/registry.js` holds the encrypted list of issued certificates: each record is encrypted with a key derived from its own certificate ID, so names cannot be read from the file.
+
+The registry is empty until certificates are issued. After a batch run of `issue_certificates.py` (kept in the Digital Biz Lab project), replace `verify/registry.js` with the generated one and push. Revoking a certificate works the same way. `issued.csv` (names and emails) must never be committed here.
+
+The page uses the site's self-hosted fonts and loads no third-party scripts.

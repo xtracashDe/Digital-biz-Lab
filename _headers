@@ -6,3 +6,7 @@
 
 /assets/fonts/*
   Cache-Control: public, max-age=31536000, immutable
+
+/verify/*
+  Cache-Control: public, max-age=0, must-revalidate
+  X-Robots-Tag: noindex
