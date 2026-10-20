@@ -50,10 +50,11 @@ The TikTok Pixel loads only after a visitor clicks Accept on the cookie banner. 
 
 Search `index.html` for these and change them when a new season opens:
 
-* Cohort dates (`Tue 6, Wed 7 and Thu 8 Oct 2026`, and the hero badge)
-* Early bird price, deadline and regular price
+* Cohort dates (`Tue 10, Wed 11 and Thu 12 Nov 2026`, and the hero badge)
+* Early bird price, deadline and regular price (the card price, `s2PriceFrom`, `s2PriceAmount`, `s2PriceNote`, and the script that switches to the regular price after the deadline)
 * Seat cap
-* The Selar link (`https://selar.co/digitalbizlab`)
+* The Selar link (currently Season 2: `https://selar.com/14l2t82654`)
+* The pixel event names (`ai-for-business-mastery-s2`, `AI for Business Mastery Season 2`)
 
 If the cohort format changes (number of sessions, WhatsApp support period, recordings, certificate), also check the Refund Policy and Terms so they still match what you sell.
 
